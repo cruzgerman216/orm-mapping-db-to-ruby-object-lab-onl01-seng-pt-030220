@@ -49,7 +49,7 @@ class Student
       if(i != num)
         arr.push(row[i])
       end
-      i =+ 1
+      i += 1
     end
     arr
   end
