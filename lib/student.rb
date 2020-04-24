@@ -58,14 +58,10 @@ class Student
     sql = <<-SQL
     SELECT * FROM students WHERE grade = ?
     SQL
-    i = 0
     arr = []
     DB[:conn].execute(sql,num).map do |row|
     student =  self.new_from_db(row)
-      if(i != num)
         arr.push(student)
-      end
-      i += 1
     end
     arr
   end
