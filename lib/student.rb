@@ -50,6 +50,7 @@ class Student
         arr.push(row[i])
       end
     end
+    arr
   end
 
   def self.find_by_name(name)
