@@ -42,8 +42,13 @@ class Student
     sql = <<-SQL
     SELECT * FROM students WHERE grade = 10
     SQL
+    i = 0
+    arr = []
     DB[:conn].execute(sql).map do |row|
       self.new_from_db(row)
+      if(i != num)
+        arr.push(row[i])
+      end
     end
   end
 
