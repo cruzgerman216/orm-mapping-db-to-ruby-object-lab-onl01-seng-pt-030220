@@ -54,6 +54,22 @@ class Student
     arr
   end
 
+  def self.all_students_in_grade_X(num)
+    sql = <<-SQL
+    SELECT * FROM students WHERE grade = 10
+    SQL
+    i = 0
+    arr = []
+    DB[:conn].execute(sql).map do |row|
+    student =  self.new_from_db(row)
+      if(i != num)
+        arr.push(student)
+      end
+      i += 1
+    end
+    arr
+  end
+  
   def self.first_student_in_grade_10
     sql = <<-SQL
     SELECT * FROM students WHERE grade = 10
@@ -71,6 +87,7 @@ class Student
     getkid
   end
 
+  
   def self.find_by_name(name)
     sql = <<-SQL
     SELECT * FROM students WHERE name = ? LIMIT 1
